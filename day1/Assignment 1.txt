@@ -1,0 +1,340 @@
+Q1. Explore the following commands with various options, refer man pages for 
+    further help 
+
+a) date => Mon Sep  7 13:59:15 UTC 2020
+
+b) cal =>  
+
+  September 2020
+Su Mo Tu We Th Fr Sa
+    1  2  3  4  5
+ 6  7  8  9 10 11 12
+13 14 15 16 17 18 19
+20 21 22 23 24 25 26
+27 28 29 30
+
+c) bc => bc 1.06.95
+Copyright 1991-1994, 1997, 1998, 2000, 2004, 2006 Free Software Foundation, Inc.
+This is free software with ABSOLUTELY NO WARRANTY.
+For details type `warranty'.
+
+d) echo => [ec2-user@ip-172-31-53-27 op]$ echo "Hello CDAC"
+Hello CDAC
+
+e) who 
+[ec2-user@ip-172-31-53-27 op]$ who
+ec2-user pts/0        2020-09-07 13:23 (106.76.70.16)
+ec2-user pts/1        2020-09-07 13:57 (106.76.70.16)
+
+f) whoami 
+[ec2-user@ip-172-31-53-27 op]$ whoami
+ec2-user
+
+g) logname 
+[ec2-user@ip-172-31-53-27 op]$ logname
+ec2-user
+
+h) uname 
+[ec2-user@ip-172-31-53-27 op]$ uname
+Linux
+
+i) seq i
+[ec2-user@ip-172-31-53-27 op]$ seq 3
+1
+2
+3
+
+j) clear
+=======================================================================================================
+Q2.	
+A) Create three directory a b and c and create a.txt,b.txt and c.txt
+	in each directory respectively and then copy c directory into the a.
+	[ec2-user@ip-172-31-53-27 ~]$ mkdir a b c
+	[ec2-user@ip-172-31-53-27 a]$ touch a.txt
+	[ec2-user@ip-172-31-53-27 ~]$ mv c a
+	[ec2-user@ip-172-31-53-27 a]$ ls
+	a.txt  c
+
+B) Move Directory b to c.
+	[ec2-user@ip-172-31-53-27 ~]$ mv b c
+
+C)Create alias of ls -lh command to your name.
+	[ec2-user@ip-172-31-53-27 ec2-user]$ alias l='ls -lh'
+
+D)Change Directory name a to cdac.
+	[ec2-user@ip-172-31-53-27 ec2-user]$ mv a cdac
+
+
+
+Q3.
+ A) Create five files file1.txt , file2.txt ,file3.txt file4.txt and
+    file5.txt with some text inside it. Search for 's' character
+    inside all the files using grep command.
+    Also Use cat to view all file content together.
+[ec2-user@ip-172-31-53-27 c]$ touch file1.txt file2.txt file3.txt file4.txt file5.txt
+
+[ec2-user@ip-172-31-53-27 c]$ cat file1.txt file2.txt file3.txt file4.txt file5.txt
+hello
+hello
+hello
+hello
+hello
+
+
+B)Create file.txt using cat and edit that using nano editor.
+	[ec2-user@ip-172-31-53-27 ~]$ cat file.txt
+	[ec2-user@ip-172-31-53-27 ~]$ nano file.txt
+
+c)Create 5 empty files using touch command
+	touch file1.txt file2.txt file3.txt file4.txt file5.txt
+
+D)Remove previously created directory a , b and c.
+	[ec2-user@ip-172-31-53-27 ~]$ rm -r c cdac
+
+Q4. Create a file with some content using vi editor
+
+a)Display the file using cat command
+[ec2-user@ip-172-31-53-27 ~]$ vi file.txt
+[ec2-user@ip-172-31-53-27 ~]$ cat file.txt
+Hello
+Created using VI Editor
+
+b)Display line numbers along with content
+[ec2-user@ip-172-31-53-27 ~]$ cat -n file.txt
+     1  Hello
+     2  Created using VI Editor
+     3
+
+c)Display the file in reverse order using tac
+[ec2-user@ip-172-31-53-27 ~]$ tac file.txt
+
+Created using VI Editor
+Hello
+
+
+d) Combine multiple files using cat command
+	[ec2-user@ip-172-31-53-27 ~]$ cat file1.txt file2.txt > file3.txt
+
+
+Q5. Create Random some files and sub directories.
+
+a) display files row wise, column wise, 1 per row
+[ec2-user@ip-172-31-53-27 ~]$ ls -1
+a
+b
+c
+d
+file.txt
+movies
+
+b) sort the files in ascending, descending order
+	sort file.txt
+	sort -r file.txt
+c)Create some hidden files and sub directories and display them using “ls -a”
+[ec2-user@ip-172-31-53-27 ~]$ ls -a
+.   a  .bash_history  .bash_profile  c   .e         file2.txt  .file6.txt  .ssh
+..  b  .bash_logout   .bashrc        .d  file1.txt  file3.txt  file.txt    .viminfo
+
+
+d)Change time stamp of some files and directories using touch command and display the files using ls -t ls -rt
+[ec2-user@ip-172-31-53-27 ~]$ stat -c %y file.txt
+2020-09-07 17:37:37.057166114 +0000
+
+e)Recursive display contents of your home directory.
+ls -R
+[ec2-user@ip-172-31-53-27 ~]$ ls -R
+.:
+a  b  c  file1.txt  file2.txt  file3.txt  file.txt
+
+./a:
+1.txt  a
+
+./a/a:
+
+./b:
+
+./c:
+
+---------------------------------------------------------------------------------------------
+[ec2-user@ip-172-31-53-27 ~]$ tree
+.
+├── a
+│   ├── 1.txt
+│   ├── 2.txt
+│   └── t
+│       ├── g.txt
+│       └── t.txt
+├── b
+│   ├── 2.txt
+│   ├── 3.txt
+│   └── 4.txt
+├── c
+│   ├── l
+│   ├── m
+│   └── n
+├── d
+├── file.txt
+└── movies
+
+f)display all attributes of files and directories using ls -l
+[ec2-user@ip-172-31-53-27 ~]$ ls -l
+total 16
+drwxrwxr-x 3 ec2-user ec2-user 28 Sep  7 17:59 a
+drwxrwxr-x 2 ec2-user ec2-user  6 Sep  7 17:47 b
+drwxrwxr-x 2 ec2-user ec2-user  6 Sep  7 17:47 c
+-rw-rw-r-- 1 ec2-user ec2-user  6 Sep  7 17:42 file1.txt
+-rw-rw-r-- 1 ec2-user ec2-user  6 Sep  7 17:42 file2.txt
+-rw-rw-r-- 1 ec2-user ec2-user 12 Sep  7 17:43 file3.txt
+-rw-rw-r-- 1 ec2-user ec2-user 32 Sep  7 17:37 file.txt
+
+g)display attributes of a directory using ls -ld
+	[ec2-user@ip-172-31-53-27 ~]$ ls -ld
+        drwx------ 8 ec2-user ec2-user 243 Sep  7 17:51 .
+
+========================================================================================
+
+Q1. Create directory of your name and then create 4 files inside it named
+	a.txt, b.txt, c.txt and d.sh. And change the directory permission to
+	[ec2-user@ip-172-31-53-27 ~]$ mkdir shankar
+	[ec2-user@ip-172-31-53-27 ~]$ touch a.txt b.txt c.txt d.txt
+	only user and also files permission to only user such that
+a)user can read and write the file a.txt and b.txt
+	[ec2-user@ip-172-31-53-27 ~]$ chmod 600 a.txt b.txt
+b)user can write the file c.txt
+	[ec2-user@ip-172-31-53-27 ~]$ chmod 200 c.txt
+c)user can exectuable the file d.sh. Make
+	[ec2-user@ip-172-31-53-27 ~]$ chmod 100 d.sh
+			Contents of file d.sh:
+			#/bin/sh
+			ls -lh
+
+
+Q2. Change the permission of the previous directory to executable only.
+[ec2-user@ip-172-31-53-27 ~]$ chmod 111 shankar
+[ec2-user@ip-172-31-53-27 ~]$ ls -l
+total 0
+d--x--x--x 2 ec2-user ec2-user 70 Sep  7 18:16 shankar
+	Analyze the output.
+
+Q3. Change the permission of the previous directory to read only.
+[ec2-user@ip-172-31-53-27 ~]$ chmod 444 shankar
+[ec2-user@ip-172-31-53-27 ~]$ ls -l
+total 0
+dr--r--r-- 2 ec2-user ec2-user 70 Sep  7 18:16 shankar
+	Analyze the output.
+
+Q4. Use echo to list the all files of your home directory.
+[ec2-user@ip-172-31-53-27 shankar]$ echo *
+a.txt b.txt c.txt d.sh d.txt
+
+Q5. Use echo to list the all files of /etc/ directory
+[ec2-user@ip-172-31-53-27 etc]$ echo * /etc/directory
+
+Q6. Use echo to list the all files of /etc/ directory with extension name .conf
+[ec2-user@ip-172-31-53-27 etc]$ echo * /etc/directory *.conf
+
+Q7. Use echo to append your name to a.txt
+echo shankar >> a.txt
+=============================================================================================
+
+Note:Many operation might not work.Analyze them
+1.Create Three level nested directory a,b and c
+a)Create at least one hidden file in each directory
+touch .a.txt
+b)Create at least one normal text file in each directory
+touch b.txt
+c)Copy c into a
+
+d)Copy file inside a into b
+
+2.Change the third level directory c permission to read only
+[ec2-user@ip-172-31-53-27 b]$ chmod 444 c
+
+3.Try copying third level c directory to outside of a
+
+4.Create the directory  “data“ inside b
+[ec2-user@ip-172-31-53-27 b]$ mkdir data
+[ec2-user@ip-172-31-53-27 b]$ ls
+c  data
+
+5.Change the permission of b to read and write only
+[ec2-user@ip-172-31-53-27 a]$ chmod 666 b
+[ec2-user@ip-172-31-53-27 a]$ ls -l
+total 0
+drw-rw-rw- 4 ec2-user ec2-user 41 Sep  7 18:46 b
+drwxrwxr-x 2 ec2-user ec2-user  6 Sep  7 18:46 data
+
+6.Create directory “data2”  inside b
+[ec2-user@ip-172-31-53-27 a]$ mkdir data2
+[ec2-user@ip-172-31-53-27 a]$ ls
+b  data  data2
+
+7.Create data.txt file inside b
+[ec2-user@ip-172-31-53-27 a]$ touch data.txt
+
+8.Rename the second level directory c to copied_dir
+[ec2-user@ip-172-31-53-27 b]$ mv c copied_dir
+[ec2-user@ip-172-31-53-27 b]$ ls
+copied_dir  data
+
+9.Change permission of copied_dir to only executable
+[ec2-user@ip-172-31-53-27 b]$ chmod 111 copied_dir
+d--x--x--x 2 ec2-user ec2-user 20 Sep  7 18:40 copied_dir
+
+10.Try ls on copied_dir
+[ec2-user@ip-172-31-53-27 copied_dir]$ ls
+ls: cannot open directory .: Permission denied
+
+11.Try moving copied_dir to outside of a
+[ec2-user@ip-172-31-53-27 ~]$ chmod 700 a
+[ec2-user@ip-172-31-53-27 ~]$ ls -l
+total 0
+drwx------ 5 ec2-user ec2-user 70 Sep  7 18:48 a
+
+12.Try moving data directory outside of a
+
+13.Now change the owner of the directory a to root
+[ec2-user@ip-172-31-53-27 ~]$ chown root file.txt
+chown: changing ownership of ‘file.txt’: Operation not permitted
+
+14.Change permission of a to read write and executable to only user
+[ec2-user@ip-172-31-53-27 ~]$ chmod 700 file.txt
+[ec2-user@ip-172-31-53-27 ~]$ ls -l
+total 0
+-rwx------ 1 ec2-user ec2-user 0 Sep  8 11:23 file.txt
+
+15.Try creating directory sample inside a
+[ec2-user@ip-172-31-53-27 ~]$ mkdir a
+[ec2-user@ip-172-31-53-27 ~]$ cd a
+[ec2-user@ip-172-31-53-27 a]$ mkdir sample
+[ec2-user@ip-172-31-53-27 a]$ ls
+sample
+
+16.Create directory x outside a
+[ec2-user@ip-172-31-53-27 ~]$ mkdir x
+
+17.Try moving x inside a
+[ec2-user@ip-172-31-53-27 ~]$ mv x a
+[ec2-user@ip-172-31-53-27 ~]$ cd a
+[ec2-user@ip-172-31-53-27 a]$ ls
+sample  x
+
+18.Create directory movies
+[ec2-user@ip-172-31-53-27 ~]$ mkdir movies
+
+19.Change group of movies to sudo
+
+20.Change group of movies to avahi
+
+21.Try changing permission after changing ownership to root
+
+22.Try Changing permission after changing group to sudo without sudo
+
+23.Try Changing owner and group both to root
+
+24.Try changinging permission
+
+25.Try deleting the file
+
+	
+	
