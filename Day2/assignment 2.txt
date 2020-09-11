@@ -93,6 +93,12 @@ do
 done
 -------------------------------------------------------------------------------------------- 
 4. Write a script that print environment variable(Print $HOME,$PATH,$SHELL,$HISTORY,$LOGNAME,$TERM)
+
+   echo "Path = $PATH"  
+   echo "Shell = $SHELL"
+   echo "History = $HISTORY"
+   echo "Logname = $LOGNAME"
+   echo "Term = $TERM"
 -------------------------------------------------------------------------------------------------
 5. Write a shell script to print all files permissions in current directory(Not name or other details)(Use cut commands)
 
@@ -107,8 +113,25 @@ drwxr-xr-x
 drwxrwxr-x 1
 ---------------------------------------------------------------------------------
 6. Write a shell script to print all files permissions and name of file
+
+#!/bin/bash
+
+ls -l | awk '{ print $1,$9 }' 
 -----------------------------------------------------------------------------------------
 7.Write a shell script to print all files name and size greater than 5K
+
+ #!/bin/bash
+for i in *
+do
+        if [ "-f" "$i" ];
+                then  
+        file=`ls -l "$i" | awk '{print $5}'`        
+if [ "$file" > 5000 ];
+                        then
+                        ls -l "$i"
+                fi 
+        fi
+done
 -------------------------------------------------------------------------------------------
 
 1. Write a script To check given year is leap or not.
@@ -136,7 +159,9 @@ case $n in
         3) echo "Tuesday" ;;
         4) echo "Wednesday" ;;
         5) echo "Thursday" ;;
-        6) echo "Friday" ;;                                                                                                     7) echo "Saturday" ;;                                                                                                   *) echo "enter value between 1 to 7" ;;
+        6) echo "Friday" ;;                                                                                                  
+	7) echo "Saturday" ;;                                                                                                 
+	*) echo "enter value between 1 to 7" ;;
 esac 
 -------------------------------------------------------------------------------
 3. a) Write a script to find biggest of three no.s
@@ -186,11 +211,53 @@ fi
 ---------------------------------------------------------------------------------------
 5. Write a program to print calendar of current month in next year,previous years.
 	For eg:-sep 2014,sep 2012 if current month is sep 2013
+	
+	#!/bin/bash
+
+	mon=$(date | awk '{print $3}')
+	year=$(date | awk '{print $4}')
+
+	let "prev=year-1" "next=year+1"
+
+	cal $mon $prev
+	cal $mon $year
+	cal $mon $next
 ----------------------------------------------------------------------------------	
 6. Write a program to find sum and product of two no.s using 
 	a) let 
 	b)expr
 	c)bc	
+	
+#!/bin/bash
+
+	echo 'Enter num1 : '
+	read num1
+	echo 'Enter num2 : '
+	read num2
+	echo 'Enter num3 : '
+	read num3
+
+	(( avg = (( $num1+$num2+$num3 ))/3 ))
+	echo 'Average : '$avg
+	
+	
+#!/bin/bash
+
+	echo 'Enter num1 : '
+	read num1
+	echo 'Enter num2 : '
+	read num2
+
+	let "prodlet=num1*num2"
+
+	prodExp=$(expr $num1 \* $num2)
+
+	echo 'Let : '
+	echo $prodlet 
+	echo 'Expr : '
+	echo $prodExp
+	echo 'BC : '
+	echo $num1 \* $num2 | bc
 --------------------------------------------------------------------------------------
 7. Write a script to generate Fibonacci series.
 echo "Enter the number of terms";
